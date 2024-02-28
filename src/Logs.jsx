@@ -1,17 +1,18 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Logs = ( { logs, setLogs, setToggleDetails }) => {
    useEffect (() => {
-    fetch("http://localhost:3333/logs")
+    fetch("http://localhost:3003/logs")
     .then((res) => res.json())
     .then((data) => setLogs(data.logs));
    }, []); 
 
-   if(logs.length === 0) return null;
+   if(logs.length === 0) return null
 
    return (
     <div>
+        {console.log(logs)}
         <h1>Logs</h1>
         {logs.map(({ id,
 captainName,
@@ -19,7 +20,7 @@ title,
 post,
 mistakesWereMadeToday,
 daysSinceLastCrisis })=> {
-    <div key={id}>
+    return <div key={id}>
         <h3>Captain Name: {captainName}</h3>
         <p>Title: {title}</p>
         <p>Post: {post}</p>
